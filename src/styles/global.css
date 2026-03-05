@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #292929;
+  --color-light: #ededed;
+  --color-grey: #9fa3a4;
+  --color-lime: #98ea39;
+  --color-lime-hover: #7ecb2a;
+
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Manrope", sans-serif;
+}

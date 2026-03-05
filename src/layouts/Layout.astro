@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+}
+
+const { title = 'RESET GYM — Fitness Evolution' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="el">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="RESET GYM — Δομή, Επιστήμη, Κοινότητα. Fitness Evolution στην Ελλάδα." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-dark text-light font-body antialiased">
+		<Nav />
+		<slot />
+		<Footer />
+	</body>
+</html>

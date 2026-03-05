@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+
+	<!-- ═══════════════════════════════════════════════ -->
+	<!-- HERO -->
+	<!-- ═══════════════════════════════════════════════ -->
+	<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+		<!-- Background Video -->
+		<video
+			class="absolute inset-0 w-full h-full object-cover"
+			autoplay
+			muted
+			loop
+			playsinline
+		>
+			<source src="/20226_Man doing pull_Ups on a pull_Up bar_By_Ami_Bornstein_Artlist_HD.mp4" type="video/mp4" />
+		</video>
+		<!-- Overlay -->
+		<div class="absolute inset-0 bg-dark/75"></div>
+
+		<div class="relative max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 lg:py-40 w-full">
+			<p class="text-lime font-bold text-sm tracking-[0.3em] uppercase mb-6">
+				Fitness Evolution
+			</p>
+			<h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[0.95] tracking-tight max-w-5xl">
+				Εξελίξου<span class="text-lime">.</span><br />
+				Δομή, Επιστήμη,<br />
+				Κοινότητα
+			</h1>
+			<p class="mt-8 text-grey text-lg md:text-xl max-w-2xl leading-relaxed">
+				Η καλύτερη εκδοχή σου σε περιμένει. Πρόοδος με μέθοδο. Απόδοση με μέτρηση. Εξέλιξη με κοινότητα.
+			</p>
+			<div class="mt-12 flex flex-col sm:flex-row gap-4">
+				<a
+					href="#pillars"
+					class="inline-block bg-lime text-dark font-bold text-sm tracking-wider uppercase px-8 py-4 hover:translate-x-1 hover:-translate-y-1 transition-transform duration-150"
+				>
+					Ξεκίνα τώρα
+				</a>
+				<a
+					href="#manifesto"
+					class="inline-block border border-light/20 text-light font-bold text-sm tracking-wider uppercase px-8 py-4 hover:border-light/50 transition-colors duration-150"
+				>
+					Μάθε περισσότερα
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════════════════════════════════ -->
+	<!-- 4 PILLARS -->
+	<!-- ═══════════════════════════════════════════════ -->
+	<section id="pillars" class="py-24 md:py-32 lg:py-40">
+		<div class="max-w-7xl mx-auto px-6 md:px-12">
+
+			<p class="text-lime font-bold text-sm tracking-[0.3em] uppercase mb-4">
+				Οι πυλώνες μας
+			</p>
+			<h2 class="font-heading text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight mb-16 md:mb-24 max-w-3xl">
+				Τέσσερις αρχές<span class="text-lime">.</span><br />
+				Ένα σύστημα<span class="text-lime">.</span>
+			</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-light/5">
+
+				<!-- Pillar 1 — Method -->
+				<article class="bg-dark p-8 md:p-12 lg:p-16 group">
+					<span class="text-lime font-heading text-6xl md:text-7xl leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-300">01</span>
+					<h3 class="font-heading text-xl md:text-2xl uppercase tracking-tight mt-6 mb-4 leading-tight">
+						Η πρόοδος δεν περιμένει διάθεση<span class="text-lime">.</span><br />
+						Χτίζεται με μέθοδο<span class="text-lime">.</span>
+					</h3>
+					<p class="text-grey leading-relaxed mb-8 max-w-md">
+						Κάθε προπόνηση έχει σκοπό. Δεν αφήνουμε τίποτα στην τύχη. Ακολουθούμε ένα δομημένο σύστημα progressive overload και periodization — γιατί η μέθοδος φέρνει αποτελέσματα, όχι η τύχη.
+					</p>
+					<a href="/methodologia" class="text-lime text-sm font-bold tracking-wider uppercase border-b border-lime/30 pb-1 hover:border-lime transition-colors duration-150">
+						Δες πώς η μέθοδος φέρνει αποτελέσματα &rarr;
+					</a>
+				</article>
+
+				<!-- Pillar 2 — Science -->
+				<article class="bg-dark p-8 md:p-12 lg:p-16 group">
+					<span class="text-lime font-heading text-6xl md:text-7xl leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-300">02</span>
+					<h3 class="font-heading text-xl md:text-2xl uppercase tracking-tight mt-6 mb-4 leading-tight">
+						Δεν ακολουθούμε τάσεις<span class="text-lime">.</span><br />
+						Ακολουθούμε δεδομένα<span class="text-lime">.</span>
+					</h3>
+					<p class="text-grey leading-relaxed mb-8 max-w-md">
+						Κάθε βήμα είναι μετρήσιμο. Κάθε πρόγραμμα βασίζεται σε επιστήμη, όχι σε trends. Παρακολουθούμε work capacity, recovery και adaptation — ώστε να βλέπεις πραγματικά αποτελέσματα.
+					</p>
+					<a href="/programmata" class="text-lime text-sm font-bold tracking-wider uppercase border-b border-lime/30 pb-1 hover:border-lime transition-colors duration-150">
+						Μάθε την επιστήμη πίσω από την πρόοδό σου &rarr;
+					</a>
+				</article>
+
+				<!-- Pillar 3 — Community -->
+				<article class="bg-dark p-8 md:p-12 lg:p-16 group">
+					<span class="text-lime font-heading text-6xl md:text-7xl leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-300">03</span>
+					<h3 class="font-heading text-xl md:text-2xl uppercase tracking-tight mt-6 mb-4 leading-tight">
+						Δεν είσαι πελάτης<span class="text-lime">.</span><br />
+						Είσαι μέλος<span class="text-lime">.</span>
+					</h3>
+					<p class="text-grey leading-relaxed mb-8 max-w-md">
+						Η κοινότητα ανεβάζει τα standards σου. Προπονείσαι δίπλα σε ανθρώπους που μοιράζονται τους ίδιους στόχους και την ίδια νοοτροπία. Εδώ η δύναμη είναι μεταδοτική.
+					</p>
+					<a href="/koinotita" class="text-lime text-sm font-bold tracking-wider uppercase border-b border-lime/30 pb-1 hover:border-lime transition-colors duration-150">
+						Γίνε μέρος της κοινότητας &rarr;
+					</a>
+				</article>
+
+				<!-- Pillar 4 — Performance -->
+				<article class="bg-dark p-8 md:p-12 lg:p-16 group">
+					<span class="text-lime font-heading text-6xl md:text-7xl leading-none opacity-20 group-hover:opacity-40 transition-opacity duration-300">04</span>
+					<h3 class="font-heading text-xl md:text-2xl uppercase tracking-tight mt-6 mb-4 leading-tight">
+						Δεν προπονούμαστε για ιδρώτα<span class="text-lime">.</span><br />
+						Προπονούμαστε για απόδοση<span class="text-lime">.</span>
+					</h3>
+					<p class="text-grey leading-relaxed mb-8 max-w-md">
+						Κάθε προπόνηση σε φέρνει πιο κοντά στην καλύτερη εκδοχή σου. Δεν μετράμε μόνο τον ιδρώτα — μετράμε δύναμη, κινητικότητα, αντοχή. Κάθε μέρα που προπονείσαι είναι μια νίκη.
+					</p>
+					<a href="/epikoinonia" class="text-lime text-sm font-bold tracking-wider uppercase border-b border-lime/30 pb-1 hover:border-lime transition-colors duration-150">
+						Ξεκίνα να χτίζεις τον καλύτερο εαυτό σου &rarr;
+					</a>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════════════════════════════════ -->
+	<!-- MANIFESTO / EMOTIONAL HOOK -->
+	<!-- ═══════════════════════════════════════════════ -->
+	<section id="manifesto" class="py-24 md:py-32 lg:py-40 border-t border-b border-light/5">
+		<div class="max-w-7xl mx-auto px-6 md:px-12">
+			<div class="max-w-4xl">
+				<p class="text-lime font-bold text-sm tracking-[0.3em] uppercase mb-6">
+					Manifesto
+				</p>
+				<h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05] mb-12">
+					Reset<span class="text-lime">.</span><br />
+					Start clean<span class="text-lime">.</span><br />
+					Function again<span class="text-lime">.</span>
+				</h2>
+
+				<div class="space-y-6 text-grey text-lg md:text-xl leading-relaxed max-w-2xl">
+					<p>
+						Ξεκλείδωσε δυνατότητες που δεν γνώριζες ότι έχεις. Κάθε σύστημα χρειάζεται reset — μια επιστροφή στα βασικά, μια αναβάθμιση στη λειτουργία.
+					</p>
+					<p>
+						Απορρίπτουμε τον άσκοπο ιδρώτα και τα fitness trends. Πιστεύουμε στη δομή, στην επιστήμη, στη μετρήσιμη πρόοδο. Πιστεύουμε ότι η προπόνηση είναι εξέλιξη — και η εξέλιξη δεν σταματάει ποτέ.
+					</p>
+					<p class="text-light font-bold">
+						Εδώ δεν ψάχνεις κίνητρο. Εδώ χτίζεις αυτονομία, κυριαρχία στο σώμα σου, και μια κοινότητα που σε ανεβάζει. Κάθε μέρα.
+					</p>
+				</div>
+
+				<a
+					href="/epikoinonia"
+					class="inline-block bg-lime text-dark font-bold text-sm tracking-wider uppercase px-8 py-4 mt-12 hover:translate-x-1 hover:-translate-y-1 transition-transform duration-150"
+				>
+					Γίνε μέλος
+				</a>
+			</div>
+		</div>
+	</section>
+
+</Layout>

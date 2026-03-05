@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Επικοινωνία — RESET GYM">
+
+	<!-- Hero -->
+	<section class="pt-32 md:pt-40 pb-24 md:pb-32">
+		<div class="max-w-7xl mx-auto px-6 md:px-12">
+			<p class="text-lime font-bold text-sm tracking-[0.3em] uppercase mb-6">
+				Επικοινωνία
+			</p>
+			<h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.95] tracking-tight max-w-5xl">
+				Μίλησε μαζί μας<span class="text-lime">.</span>
+			</h1>
+			<p class="mt-8 text-grey text-lg md:text-xl max-w-2xl leading-relaxed">
+				Ρώτησε ό,τι θέλεις. Κάθε ερώτηση είναι ένα βήμα πιο κοντά στην αρχή σου.
+			</p>
+		</div>
+	</section>
+
+	<!-- Contact Form + Info -->
+	<section class="py-24 md:py-32 border-t border-light/5">
+		<div class="max-w-7xl mx-auto px-6 md:px-12">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+				<!-- Form -->
+				<div>
+					<h2 class="font-heading text-2xl md:text-3xl uppercase tracking-tight mb-8">
+						Στείλε μήνυμα<span class="text-lime">.</span>
+					</h2>
+					<form class="space-y-6">
+						<div>
+							<label for="name" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">Όνομα</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								required
+								class="w-full bg-transparent border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
+								placeholder="Το όνομά σου"
+							/>
+						</div>
+						<div>
+							<label for="email" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								class="w-full bg-transparent border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
+								placeholder="Το email σου"
+							/>
+						</div>
+						<div>
+							<label for="phone" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">Τηλέφωνο</label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								class="w-full bg-transparent border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
+								placeholder="Το τηλέφωνό σου (προαιρετικό)"
+							/>
+						</div>
+						<div>
+							<label for="interest" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">Ενδιαφέρον</label>
+							<select
+								id="interest"
+								name="interest"
+								class="w-full bg-dark border border-light/10 text-grey px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
+							>
+								<option value="">Επίλεξε πρόγραμμα</option>
+								<option value="personal">Personal Training</option>
+								<option value="group">Group Training</option>
+								<option value="online">Online Coaching</option>
+								<option value="other">Άλλο</option>
+							</select>
+						</div>
+						<div>
+							<label for="message" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">Μήνυμα</label>
+							<textarea
+								id="message"
+								name="message"
+								rows="5"
+								required
+								class="w-full bg-transparent border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150 resize-none"
+								placeholder="Πες μας τι ψάχνεις..."
+							></textarea>
+						</div>
+						<button
+							type="submit"
+							class="inline-block bg-lime text-dark font-bold text-sm tracking-wider uppercase px-8 py-4 hover:translate-x-1 hover:-translate-y-1 transition-transform duration-150 w-full sm:w-auto"
+						>
+							Αποστολή
+						</button>
+					</form>
+				</div>
+
+				<!-- Contact Info -->
+				<div class="space-y-12">
+					<div>
+						<h2 class="font-heading text-2xl md:text-3xl uppercase tracking-tight mb-8">
+							Βρες μας<span class="text-lime">.</span>
+						</h2>
+						<div class="space-y-6">
+							<div>
+								<p class="font-heading text-sm uppercase tracking-[0.2em] text-lime mb-2">Email</p>
+								<a href="mailto:alexankisk@gmail.com" class="text-light hover:text-lime transition-colors duration-150">
+									alexankisk@gmail.com
+								</a>
+							</div>
+							<div>
+								<p class="font-heading text-sm uppercase tracking-[0.2em] text-lime mb-2">Τηλέφωνο</p>
+								<a href="tel:+306982907000" class="text-light hover:text-lime transition-colors duration-150">
+									698 290 7000
+								</a>
+							</div>
+							<div>
+								<p class="font-heading text-sm uppercase tracking-[0.2em] text-lime mb-2">Τοποθεσία</p>
+								<p class="text-grey">
+									Θεσσαλονίκη, Ελλάδα
+								</p>
+							</div>
+							<div>
+								<p class="font-heading text-sm uppercase tracking-[0.2em] text-lime mb-2">Ωράριο</p>
+								<ul class="text-grey text-sm space-y-1">
+									<li>Δευτέρα – Παρασκευή: 07:00 – 22:00</li>
+									<li>Σάββατο: 09:00 – 18:00</li>
+									<li>Κυριακή: Κλειστά</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Map Placeholder -->
+					<div class="border border-light/10 aspect-video flex items-center justify-center">
+						<div class="text-center">
+							<p class="text-grey text-sm uppercase tracking-wider mb-2">Map</p>
+							<p class="text-grey/50 text-xs">Θεσσαλονίκη, Ελλάδα</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</Layout>

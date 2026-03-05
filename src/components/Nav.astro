@@ -1,0 +1,126 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+	{ label: 'Μεθοδολογία', href: '/methodologia' },
+	{ label: 'Προγράμματα', href: '/programmata' },
+	{ label: 'Κοινότητα', href: '/koinotita' },
+	{ label: 'About', href: '/about' },
+];
+
+function isActive(href: string): boolean {
+	return pathname === href || pathname === href + '/';
+}
+---
+
+<nav class="fixed top-0 left-0 w-full z-50 bg-dark/90 backdrop-blur-sm border-b border-light/5">
+	<div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
+
+		<!-- Logo -->
+		<a href="/" class="text-light">
+			<img src="/logo-mark.svg" alt="RESET GYM" class="h-8 md:h-10 w-auto invert" />
+		</a>
+
+		<!-- Desktop links -->
+		<div class="hidden md:flex items-center gap-8">
+			{navLinks.map(link => (
+				<a
+					href={link.href}
+					class={`text-sm font-bold tracking-wider uppercase transition-colors duration-150 ${
+						isActive(link.href) ? 'text-lime' : 'text-grey hover:text-light'
+					}`}
+				>
+					{link.label}
+				</a>
+			))}
+			<a
+				href="/epikoinonia"
+				class={`inline-block border text-sm font-bold tracking-wider uppercase px-5 py-2 transition-colors duration-150 ${
+					isActive('/epikoinonia')
+						? 'bg-lime text-dark border-lime'
+						: 'border-lime text-lime hover:bg-lime hover:text-dark'
+				}`}
+			>
+				Επικοινωνία
+			</a>
+		</div>
+
+		<!-- Mobile hamburger -->
+		<button
+			id="menu-toggle"
+			class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+			aria-label="Menu"
+		>
+			<span class="block w-6 h-0.5 bg-light transition-transform duration-200" id="bar-1"></span>
+			<span class="block w-6 h-0.5 bg-light transition-opacity duration-200" id="bar-2"></span>
+			<span class="block w-6 h-0.5 bg-light transition-transform duration-200" id="bar-3"></span>
+		</button>
+	</div>
+
+	<!-- Mobile slide-in panel -->
+	<div
+		id="mobile-menu"
+		class="md:hidden fixed inset-0 top-16 bg-dark/95 backdrop-blur-sm translate-x-full transition-transform duration-300 ease-in-out z-40"
+	>
+		<div class="flex flex-col items-center justify-center gap-8 pt-16">
+			{navLinks.map(link => (
+				<a
+					href={link.href}
+					class={`text-xl font-heading uppercase tracking-wider transition-colors duration-150 ${
+						isActive(link.href) ? 'text-lime' : 'text-light hover:text-lime'
+					}`}
+				>
+					{link.label}
+				</a>
+			))}
+			<a
+				href="/epikoinonia"
+				class={`inline-block border text-sm font-bold tracking-wider uppercase px-8 py-4 mt-4 transition-colors duration-150 ${
+					isActive('/epikoinonia')
+						? 'bg-lime text-dark border-lime'
+						: 'border-lime text-lime hover:bg-lime hover:text-dark'
+				}`}
+			>
+				Επικοινωνία
+			</a>
+		</div>
+	</div>
+</nav>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const menu = document.getElementById('mobile-menu');
+	const bar1 = document.getElementById('bar-1');
+	const bar2 = document.getElementById('bar-2');
+	const bar3 = document.getElementById('bar-3');
+	let open = false;
+
+	toggle?.addEventListener('click', () => {
+		open = !open;
+		if (open) {
+			menu?.classList.remove('translate-x-full');
+			menu?.classList.add('translate-x-0');
+			bar1?.classList.add('rotate-45', 'translate-y-[4px]');
+			bar2?.classList.add('opacity-0');
+			bar3?.classList.add('-rotate-45', '-translate-y-[4px]');
+		} else {
+			menu?.classList.add('translate-x-full');
+			menu?.classList.remove('translate-x-0');
+			bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+			bar2?.classList.remove('opacity-0');
+			bar3?.classList.remove('-rotate-45', '-translate-y-[4px]');
+		}
+	});
+
+	// Close menu when clicking a link
+	menu?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', () => {
+			menu?.classList.add('translate-x-full');
+			menu?.classList.remove('translate-x-0');
+			bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+			bar2?.classList.remove('opacity-0');
+			bar3?.classList.remove('-rotate-45', '-translate-y-[4px]');
+			open = false;
+		});
+	});
+</script>
