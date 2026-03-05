@@ -1,0 +1,254 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+}
+const { images = [] } = Astro.props;
+const mainImage = images[0];
+const thumbnails = images.slice(1, 5);
+---
+
+<div data-tour-photo-gallery>
+  <div class="tour-gallery-block">
+    <img
+      src={mainImage?.src ?? ''}
+      alt={mainImage?.alt ?? ''}
+      class="tour-main-img w-full h-96 object-cover rounded-xl cursor-pointer border-2 border-transparent hover:border-orange-500 transition-colors"
+      data-index="0"
+      role="button"
+      tabindex={0}
+    />
+    <div class="grid grid-cols-4 gap-2 mt-2">
+      {thumbnails.map((img, i) => (
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="h-24 w-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-orange-500 transition-colors tour-thumb"
+          data-index={i + 1}
+          role="button"
+          tabindex={0}
+        />
+      ))}
+    </div>
+    <button
+      type="button"
+      class="tour-all-photos inline-block text-orange-500 text-sm font-medium mt-2 hover:text-orange-600 cursor-pointer bg-transparent border-none p-0"
+    >
+      All photos
+    </button>
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    id="tour-lightbox"
+    class="tour-lightbox-backdrop fixed inset-0 z-50 hidden items-center justify-center p-6 sm:p-8"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image viewer"
+  >
+    <button
+      type="button"
+      id="tour-lightbox-close"
+      class="tour-lightbox-close-btn tour-lightbox-btn absolute z-[100] w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center transition-colors"
+      aria-label="Close"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button
+      type="button"
+      id="tour-lightbox-prev"
+      class="tour-lightbox-btn absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center transition-colors"
+      aria-label="Previous image"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div class="tour-lightbox-image-wrap relative z-10 flex items-center justify-center p-4">
+      <img
+        id="tour-lightbox-img"
+        src=""
+        alt=""
+        class="tour-lightbox-img tour-lightbox-image rounded-xl shadow-2xl opacity-0 transition-opacity duration-200"
+      />
+    </div>
+    <button
+      type="button"
+      id="tour-lightbox-next"
+      class="tour-lightbox-btn absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center transition-colors"
+      aria-label="Next image"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  #tour-lightbox.flex {
+    display: flex !important;
+  }
+  .tour-lightbox-backdrop {
+    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  #tour-lightbox:not(.tour-lightbox-open) {
+    opacity: 0;
+  }
+  #tour-lightbox.tour-lightbox-open {
+    opacity: 1;
+  }
+  .tour-lightbox-btn {
+    pointer-events: auto;
+  }
+  #tour-lightbox-close.tour-lightbox-close-btn {
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    bottom: auto;
+    transform: none;
+  }
+  #tour-lightbox-prev,
+  #tour-lightbox-next {
+    visibility: visible;
+    opacity: 1;
+    flex-shrink: 0;
+  }
+  #tour-lightbox-next {
+    right: 1rem;
+  }
+  @media (min-width: 640px) {
+    #tour-lightbox-next {
+      right: 2rem;
+    }
+  }
+  .tour-lightbox-image {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  #tour-lightbox:not(.tour-lightbox-open) .tour-lightbox-image {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  #tour-lightbox.tour-lightbox-open .tour-lightbox-image {
+    transform: scale(1);
+    opacity: 0;
+  }
+  #tour-lightbox.tour-lightbox-open .tour-lightbox-image.loaded {
+    opacity: 1;
+  }
+  .tour-lightbox-image-wrap {
+    min-height: 0;
+    box-sizing: border-box;
+    max-width: calc(100% - 8rem);
+  }
+  #tour-lightbox .tour-lightbox-img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    object-fit: contain !important;
+    display: block;
+  }
+</style>
+
+<script define:vars={{ images }}>
+  (function () {
+    if (!images || images.length === 0) return;
+    const root = document.querySelector('[data-tour-photo-gallery]');
+    if (!root) return;
+
+    const LEN = images.length;
+    let currentIndex = 0;
+    const LIGHTBOX_DURATION_MS = 300;
+
+    const lightbox = root.querySelector('#tour-lightbox');
+    const lightboxImg = root.querySelector('#tour-lightbox-img');
+    const lightboxClose = root.querySelector('#tour-lightbox-close');
+    const lightboxPrev = root.querySelector('#tour-lightbox-prev');
+    const lightboxNext = root.querySelector('#tour-lightbox-next');
+
+    function setImageAndShow(index) {
+      if (!lightboxImg) return;
+      lightboxImg.classList.remove('loaded');
+      lightboxImg.src = images[index].src;
+      lightboxImg.alt = images[index].alt;
+      lightboxImg.onload = () => lightboxImg.classList.add('loaded');
+      if (lightboxImg.complete) lightboxImg.classList.add('loaded');
+    }
+
+    function openLightbox(index) {
+      currentIndex = ((index % LEN) + LEN) % LEN;
+      if (lightboxImg) setImageAndShow(currentIndex);
+      if (lightbox) {
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+        lightbox.classList.remove('tour-lightbox-open');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => lightbox.classList.add('tour-lightbox-open'));
+        });
+      }
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove('tour-lightbox-open');
+      setTimeout(() => {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        document.body.style.overflow = '';
+      }, LIGHTBOX_DURATION_MS);
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + LEN) % LEN;
+      setImageAndShow(currentIndex);
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % LEN;
+      setImageAndShow(currentIndex);
+    }
+
+    const mainImg = root.querySelector('.tour-main-img');
+    if (mainImg) {
+      mainImg.addEventListener('click', () => openLightbox(0));
+      mainImg.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(0); }
+      });
+    }
+    root.querySelectorAll('.tour-thumb').forEach((el) => {
+      el.addEventListener('click', () => openLightbox(parseInt(el.getAttribute('data-index') || '0', 10)));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(parseInt(el.getAttribute('data-index') || '0', 10));
+        }
+      });
+    });
+    const allPhotosBtn = root.querySelector('.tour-all-photos');
+    if (allPhotosBtn) {
+      allPhotosBtn.addEventListener('click', () => openLightbox(0));
+    }
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lightboxPrev?.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    lightboxNext?.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox?.classList.contains('flex')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  })();
+</script>

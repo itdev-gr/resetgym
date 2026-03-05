@@ -1,0 +1,478 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TourPhotoGallery from '../components/TourPhotoGallery.astro';
+
+const tourImages = [
+  { src: 'https://asterionsafari.com/wp-content/uploads/2024/03/WhatsApp-Image-2023-12-28-at-13.22.46_3eefa10c.jpg', alt: 'Evening Quad Safari Tour' },
+  { src: 'https://asterionsafari.com/wp-content/uploads/2022/05/DJI_0918-1-scaled.jpg', alt: 'Evening Quad Safari' },
+  { src: 'https://asterionsafari.com/wp-content/uploads/2024/03/DJI_0951-scaled.jpg', alt: 'Evening Quad Safari' },
+  { src: 'https://asterionsafari.com/wp-content/uploads/2024/03/DJI_0936-scaled.jpg', alt: 'Evening Quad Safari' },
+  { src: 'https://asterionsafari.com/wp-content/uploads/2022/05/IMG-20230630-WA0018.jpg', alt: 'Evening Quad Safari' },
+];
+---
+
+<Layout title="Off-Road Quad Safari Evening Tour with Hotel Transfer - Asterion Safari">
+  <Header />
+  <main>
+    <div class="border-b border-gray-200"></div>
+    <div class="max-w-6xl mx-auto px-6 py-3">
+      <p class="text-sm text-gray-500">
+        Home &gt; Malia &gt; Off-Road Quad Safari Evening Tour with Hotel Transfer
+      </p>
+    </div>
+
+    <!-- Main section -->
+    <section class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 items-start">
+        <!-- LEFT COLUMN -->
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900 mb-1">Off-Road Quad Safari Evening Tour with Hotel Transfer</h1>
+          <p class="text-sm text-gray-400 mb-6">0 (0 Reviews)</p>
+
+          <!-- Photo gallery -->
+          <TourPhotoGallery images={tourImages} />
+
+          <!-- Info badges -->
+          <div class="flex flex-wrap gap-6 mt-8 mb-8 py-6 border-y border-gray-100">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div>
+                <p class="text-xs text-gray-400">Duration</p>
+                <p class="text-sm font-semibold text-gray-900">4,5 Hours</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              <div>
+                <p class="text-xs text-gray-400">Cancellation</p>
+                <p class="text-sm font-semibold text-gray-900">Up to 2 days</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              <div>
+                <p class="text-xs text-gray-400">Group Size</p>
+                <p class="text-sm font-semibold text-gray-900">10 people</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0h.5a2.5 2.5 0 002.5-2.5V3.935M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div>
+                <p class="text-xs text-gray-400">Languages</p>
+                <p class="text-sm font-semibold text-gray-900">English</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- About this activity -->
+          <h2 class="text-xl font-bold text-gray-900 mb-3">About this activity</h2>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Discover the mountains of Crete on a guided quad biking tour. Go offroad and ride along dusty trails as you explore Sisi, Vrahasi, and St. George's Monastery on this unique tour. Start with pickup from your hotel and get set up with your ATV, including an introductory lesson for beginners. Start the adventure by riding uphill to the Omalia Olive Press and taste some olive oil produced onsite. Arrive at the port of Malia and Potamos Beach, and enjoy the views of the surroundings. Continue on the dirt roads to explore the narrow streets of the quaint fishing village of Sisi. Head off-road along a dusty route passing by the traditional village of Vrachasi until you reach the St. George Selinari Monastery. Next, hit the off-road trail again and travel through a lush landscape of vineyards and olive forests to reach the chapel of the Prophet Elias. From here, relax and enjoy breathtaking panoramic views, before returning to the starting point.
+          </p>
+
+          <!-- Know before you go -->
+          <h2 class="text-xl font-bold text-gray-900 mb-3">Know before you go</h2>
+          <ul class="text-gray-600 text-sm space-y-2 mb-4 list-disc list-inside">
+            <li>If you book for 1 adult 1 quad is assigned, 2 adults get 1 quad to share, 3 adults get 2 quads, and so on</li>
+            <li>If you want 1 quad for each person for solo driving, please make separate bookings for each adult</li>
+            <li>Drivers must hold a valid car driver's license, along with an ID card in physical form</li>
+            <li>Children over 6 years old can share the quad with an adult</li>
+            <li>The activity provider reserves the right to change routes and stops for safety reasons</li>
+          </ul>
+          <p class="text-gray-900 font-bold text-sm mb-8">
+            We offer free pick up from: Sissi, Milatos, Malia, Stalida, Chersonissos, Koutouloufari, Piskopiano, Anissaras, Analipsi, Gouves, Kokkini Hani
+          </p>
+
+          <!-- Highlights -->
+          <h2 class="text-xl font-bold text-gray-900 mb-3">Highlights</h2>
+          <ul class="space-y-2 mb-8">
+            <li class="flex items-start gap-2 text-gray-700"><span class="text-orange-500 font-bold">✓</span> Feel the thrill of riding a quad bike as you explore the mountains of Crete</li>
+            <li class="flex items-start gap-2 text-gray-700"><span class="text-orange-500 font-bold">✓</span> Visit an olive oil factory and learn about the production of this local product</li>
+            <li class="flex items-start gap-2 text-gray-700"><span class="text-orange-500 font-bold">✓</span> Take in the stunning vistas of the mountains and seaside villages</li>
+            <li class="flex items-start gap-2 text-gray-700"><span class="text-orange-500 font-bold">✓</span> Explore a route that takes you to the villages of Sissi and Vrachasi</li>
+            <li class="flex items-start gap-2 text-gray-700"><span class="text-orange-500 font-bold">✓</span> Admire the panoramic views from the chapel of the Prophet Elias</li>
+          </ul>
+
+          <!-- Included / Excluded -->
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Included / Excluded</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div>
+              <p class="font-bold text-gray-900 mb-2">Included</p>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Hotel pickup and drop-off</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Quad/ATV</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Equipment</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Insurance</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Guide</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Fuel</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mineral water</li>
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Entrance Fees</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-bold text-gray-900 mb-2">Excluded</p>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li class="flex items-center gap-2"><span class="text-red-400">✗</span> Private expenses</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <h2 class="text-xl font-bold text-gray-900 mb-4">FAQ</h2>
+          <div class="space-y-2">
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+              <button type="button" class="faq-question w-full text-left px-4 py-3 font-bold text-gray-900 flex justify-between items-center hover:bg-gray-50">
+                Is a driver's license required?
+                <span class="faq-arrow text-gray-500">▼</span>
+              </button>
+              <div class="faq-answer px-4 py-3 bg-gray-50 text-gray-600 text-sm hidden">Yes, a valid car driving license is required. Additionally, please remember to bring your ID card.</div>
+            </div>
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+              <button type="button" class="faq-question w-full text-left px-4 py-3 font-bold text-gray-900 flex justify-between items-center hover:bg-gray-50">
+                What should I bring with me?
+                <span class="faq-arrow text-gray-500">▼</span>
+              </button>
+              <div class="faq-answer px-4 py-3 bg-gray-50 text-gray-600 text-sm hidden">
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Face Mask</li>
+                  <li>Comfortable walking shoes</li>
+                  <li>Sunscreen</li>
+                  <li>Hat &amp; Sunglasses</li>
+                  <li>Camera</li>
+                </ul>
+              </div>
+            </div>
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+              <button type="button" class="faq-question w-full text-left px-4 py-3 font-bold text-gray-900 flex justify-between items-center hover:bg-gray-50">
+                Is the trip available in my preferred language?
+                <span class="faq-arrow text-gray-500">▼</span>
+              </button>
+              <div class="faq-answer px-4 py-3 bg-gray-50 text-gray-600 text-sm hidden">Yes, upon request, the trip can be conducted in your preferred language.</div>
+            </div>
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+              <button type="button" class="faq-question w-full text-left px-4 py-3 font-bold text-gray-900 flex justify-between items-center hover:bg-gray-50">
+                Free of charge Pick-Up areas
+                <span class="faq-arrow text-gray-500">▼</span>
+              </button>
+              <div class="faq-answer px-4 py-3 bg-gray-50 text-gray-600 text-sm hidden">Sissi, Milatos, Malia, Stalida, Chersonissos, Koutouloufari, Piskopiano, Anissaras, Analipsi, Gouves, Kokkini Hani</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN - Sidebar (3 separate cards, sticky) -->
+        <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start overflow-visible">
+
+          <!-- Card 1: Booking (overflow-visible so calendar dropdown is not clipped) -->
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 overflow-visible relative">
+            <p class="text-lg mb-4">From: <span class="font-bold text-xl">€130,00</span></p>
+
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200 mb-4">
+              <button type="button" id="tab-book" class="pb-2 mr-6 text-sm font-semibold border-b-2 border-orange-500 text-orange-500">Book</button>
+              <button type="button" id="tab-inquiry" class="pb-2 text-sm text-gray-400 border-b-2 border-transparent hover:text-gray-600">Inquiry</button>
+            </div>
+
+            <!-- Book panel -->
+            <div id="booking-panel">
+            <!-- Date (click to open calendar) -->
+            <div class="border border-gray-200 rounded-xl p-3 mb-3 relative cursor-pointer select-none" id="booking-date-btn" role="button" tabindex="0">
+              <p class="text-xs text-gray-400 mb-1">Date</p>
+              <p class="text-sm font-semibold text-orange-500 flex items-center justify-between"><span id="selected-date">03/05/2026 - 03/05/2026</span> <span class="text-gray-400 ml-1">▾</span></p>
+              <div id="booking-cal-dropdown" class="hidden absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-[100] p-4" style="min-width: 320px;">
+                <div class="grid grid-cols-2 gap-4" id="booking-calendar-container"></div>
+              </div>
+            </div>
+
+            <!-- Shared Quad Bike counter -->
+            <div class="border border-gray-200 rounded-xl p-4 mb-3 flex items-center justify-between">
+              <div class="flex-1 pr-4">
+                <p class="text-sm font-semibold mb-1">Shared Quad Bike</p>
+                <p class="text-xs text-gray-500">Booking for two persons, you receive one quad bike for shared use.</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <button type="button" id="shared-minus" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-colors text-lg leading-none">−</button>
+                <span id="shared-count" class="text-sm font-semibold w-4 text-center">0</span>
+                <button type="button" id="shared-plus" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-colors text-lg leading-none">+</button>
+              </div>
+            </div>
+
+            <!-- Solo Riding counter -->
+            <div class="border border-gray-200 rounded-xl p-4 mb-3 flex items-center justify-between">
+              <div class="flex-1 pr-4">
+                <p class="text-sm font-semibold mb-1">Solo Riding</p>
+                <p class="text-xs text-gray-500">Booking for one person, you receive one quad bike for individual use.</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <button type="button" id="solo-minus" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-colors text-lg leading-none">−</button>
+                <span id="solo-count" class="text-sm font-semibold w-4 text-center">0</span>
+                <button type="button" id="solo-plus" class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-colors text-lg leading-none">+</button>
+              </div>
+            </div>
+
+            <!-- Guest Name -->
+            <input type="text" placeholder="Guest Name *" class="border border-gray-200 rounded-xl px-4 py-3 w-full text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+
+            <!-- Total -->
+            <div class="flex justify-between items-center py-4 border-t border-gray-100 mb-4">
+              <span class="font-bold text-base">Total</span>
+              <span class="font-bold text-base" id="total-price">€0,00</span>
+            </div>
+
+            <!-- Book now button -->
+            <button type="button" class="book-now-btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full py-3 rounded-full transition-colors mb-2">
+              Book now
+            </button>
+
+            <!-- Min people notice -->
+            <div id="min-notice" class="hidden flex items-center justify-between bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 mt-2">
+              <p class="text-xs text-orange-600">Min of people for this activity is 1 people</p>
+              <button type="button" class="min-notice-close text-orange-400 text-sm ml-2">×</button>
+            </div>
+            </div>
+
+            <!-- Inquiry panel (hidden by default) -->
+            <div id="inquiry-panel" class="hidden">
+              <input type="text" placeholder="Name *" class="border border-gray-200 rounded-xl px-4 py-3 w-full text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              <input type="email" placeholder="Email *" class="border border-gray-200 rounded-xl px-4 py-3 w-full text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              <input type="text" placeholder="Phone *" class="border border-gray-200 rounded-xl px-4 py-3 w-full text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+              <textarea placeholder="Note *" rows="4" class="border border-gray-200 rounded-xl px-4 py-3 w-full text-sm mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
+              <button type="button" class="inquiry-send-btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full py-3 rounded-full transition-colors">
+                Send
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Why book with us -->
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Why book with us?</h3>
+            <div class="space-y-4">
+              <div class="flex gap-3">
+                <span class="text-orange-500 font-bold mt-0.5">✓</span>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Expertly Guided Tours</p>
+                  <p class="text-sm text-gray-600 mt-0.5 leading-relaxed">Join us for an unforgettable quad bike safari in Crete, led by seasoned guides who know every twist and turn of the terrain.</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-orange-500 font-bold mt-0.5">✓</span>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Tailored Adventures</p>
+                  <p class="text-sm text-gray-600 mt-0.5 leading-relaxed">Discover Crete's rugged landscapes and picturesque villages on our quad bike safaris, tailored to suit adventurers of all levels.</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-orange-500 font-bold mt-0.5">✓</span>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Top-notch Equipment</p>
+                  <p class="text-sm text-gray-600 mt-0.5 leading-relaxed">From safety gear to comfortable seating, we prioritize your comfort and safety throughout the exhilarating journey.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Information Contact -->
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Information Contact</h3>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">AQ</div>
+              <div>
+                <p class="text-sm font-semibold text-gray-900">asterionquads</p>
+                <p class="text-xs text-gray-400">Member Since 2024</p>
+              </div>
+            </div>
+            <dl class="space-y-4 text-sm">
+              <div>
+                <dt class="font-semibold text-gray-900">Email</dt>
+                <dd class="mt-0.5"><a href="mailto:asterionquads@gmail.com" class="text-orange-500 hover:underline">asterionquads@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-gray-900">Website</dt>
+                <dd class="mt-0.5"><a href="https://www.asterionsafari.com" target="_blank" rel="noopener" class="text-orange-500 hover:underline">www.asterionsafari.com</a></dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-gray-900">Phone</dt>
+                <dd class="text-gray-600 mt-0.5">+030 6976339969</dd>
+              </div>
+            </dl>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+    <!-- Bottom section - Explore other options -->
+    <section class="bg-gray-50 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Explore other options</h2>
+        <div class="flex flex-wrap gap-6">
+          <a href="/day-tour" class="block max-w-sm bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+            <img src="https://asterionsafari.com/wp-content/uploads/2022/05/IMG-20230623-WA0002-3-1-450x300.jpg" alt="Day Tour" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-bold text-gray-900 mb-2">Quad Safari Off-Road Tour with Hotel Transfer</h3>
+              <p class="text-orange-500 font-bold mb-1">From €160,00</p>
+              <p class="text-sm text-gray-500 mb-3">4,5 Hours</p>
+              <span class="inline-block bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-orange-600 transition-colors">View details</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      answer.classList.toggle('hidden');
+      const arrow = btn.querySelector('.faq-arrow');
+      if (arrow) arrow.textContent = answer.classList.contains('hidden') ? '▼' : '▲';
+    });
+  });
+
+  // Booking card: counters and total
+  const PRICE = 130;
+  let sharedCount = 0;
+  let soloCount = 0;
+
+  function updateTotal() {
+    const total = (sharedCount + soloCount) * PRICE;
+    const el = document.getElementById('total-price');
+    if (el) el.textContent = total === 0 ? '€0,00' : `€${total.toLocaleString('de-DE', { minimumFractionDigits: 2 })}`;
+  }
+
+  document.getElementById('shared-plus')?.addEventListener('click', () => {
+    sharedCount++;
+    const el = document.getElementById('shared-count');
+    if (el) el.textContent = sharedCount;
+    updateTotal();
+  });
+  document.getElementById('shared-minus')?.addEventListener('click', () => {
+    if (sharedCount > 0) {
+      sharedCount--;
+      const el = document.getElementById('shared-count');
+      if (el) el.textContent = sharedCount;
+      updateTotal();
+    }
+  });
+  document.getElementById('solo-plus')?.addEventListener('click', () => {
+    soloCount++;
+    const el = document.getElementById('solo-count');
+    if (el) el.textContent = soloCount;
+    updateTotal();
+  });
+  document.getElementById('solo-minus')?.addEventListener('click', () => {
+    if (soloCount > 0) {
+      soloCount--;
+      const el = document.getElementById('solo-count');
+      if (el) el.textContent = soloCount;
+      updateTotal();
+    }
+  });
+
+  document.querySelector('.book-now-btn')?.addEventListener('click', () => {
+    if (sharedCount + soloCount === 0) {
+      document.getElementById('min-notice')?.classList.remove('hidden');
+    }
+  });
+
+  document.querySelector('.min-notice-close')?.addEventListener('click', () => {
+    document.getElementById('min-notice')?.classList.add('hidden');
+  });
+
+  // Book / Inquiry tabs
+  const tabBook = document.getElementById('tab-book');
+  const tabInquiry = document.getElementById('tab-inquiry');
+  const bookingPanel = document.getElementById('booking-panel');
+  const inquiryPanel = document.getElementById('inquiry-panel');
+  tabBook?.addEventListener('click', () => {
+    bookingPanel?.classList.remove('hidden');
+    inquiryPanel?.classList.add('hidden');
+    tabBook.classList.add('border-orange-500', 'text-orange-500');
+    tabBook.classList.remove('border-transparent', 'text-gray-400');
+    tabInquiry?.classList.remove('border-orange-500', 'text-orange-500');
+    tabInquiry?.classList.add('border-transparent', 'text-gray-400');
+  });
+  tabInquiry?.addEventListener('click', () => {
+    bookingPanel?.classList.add('hidden');
+    inquiryPanel?.classList.remove('hidden');
+    tabInquiry?.classList.add('border-orange-500', 'text-orange-500');
+    tabInquiry?.classList.remove('border-transparent', 'text-gray-400');
+    tabBook?.classList.remove('border-orange-500', 'text-orange-500');
+    tabBook?.classList.add('border-transparent', 'text-gray-400');
+  });
+
+  // Booking date picker calendar
+  const bookingDateBtn = document.getElementById('booking-date-btn');
+  const bookingCalDropdown = document.getElementById('booking-cal-dropdown');
+  const dateLabel = document.getElementById('selected-date');
+  let calStartDate = null;
+  let calEndDate = null;
+  let calMonth = new Date().getMonth();
+  let calYear = new Date().getFullYear();
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayHeaders = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+  function formatDate(d, m, y) {
+    return `${String(d).padStart(2,'0')}/${String(m+1).padStart(2,'0')}/${y}`;
+  }
+
+  function renderBookingCalendar() {
+    const container = document.getElementById('booking-calendar-container');
+    if (!container) return;
+    container.innerHTML = '';
+    for (let i = 0; i < 2; i++) {
+      const m = (calMonth + i) % 12;
+      const y = calYear + Math.floor((calMonth + i) / 12);
+      const firstDay = new Date(y, m, 1).getDay();
+      const offset = firstDay === 0 ? 6 : firstDay - 1;
+      const daysInMonth = new Date(y, m + 1, 0).getDate();
+      let html = '<div><div class="font-semibold text-sm text-gray-700 mb-2">' + monthNames[m] + ' ' + y + '</div>';
+      html += '<div class="grid grid-cols-7 gap-0.5 text-xs text-gray-500 mb-1">' + dayHeaders.map(h => '<div class="text-center">' + h + '</div>').join('') + '</div>';
+      html += '<div class="grid grid-cols-7 gap-0.5">';
+      html += '<div></div>'.repeat(offset);
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = formatDate(d, m, y);
+        const isStart = calStartDate === dateStr;
+        const isEnd = calEndDate === dateStr;
+        const isToday = d === new Date().getDate() && m === new Date().getMonth() && y === new Date().getFullYear();
+        let cls = 'text-center text-sm py-1.5 rounded cursor-pointer hover:bg-orange-100 transition-colors';
+        if (isStart || isEnd) cls += ' bg-orange-500 text-white hover:bg-orange-600';
+        else if (isToday) cls += ' border border-orange-400';
+        html += '<div class="booking-cal-day ' + cls + '" data-date="' + dateStr + '">' + d + '</div>';
+      }
+      html += '</div></div>';
+      container.innerHTML += html;
+    }
+    document.querySelectorAll('.booking-cal-day').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const dateStr = e.currentTarget.dataset.date;
+        if (!calStartDate || (calStartDate && calEndDate)) {
+          calStartDate = dateStr;
+          calEndDate = null;
+          dateLabel.textContent = calStartDate;
+        } else {
+          calEndDate = dateStr;
+          dateLabel.textContent = calStartDate + ' - ' + calEndDate;
+          bookingCalDropdown.classList.add('hidden');
+        }
+        renderBookingCalendar();
+      });
+    });
+  }
+
+  bookingDateBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    bookingCalDropdown.classList.toggle('hidden');
+    if (!bookingCalDropdown.classList.contains('hidden')) renderBookingCalendar();
+  });
+  document.addEventListener('click', (e) => {
+    if (bookingDateBtn && bookingCalDropdown && !bookingDateBtn.contains(e.target) && !bookingCalDropdown.contains(e.target)) {
+      bookingCalDropdown.classList.add('hidden');
+    }
+  });
+</script>

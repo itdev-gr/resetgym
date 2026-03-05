@@ -1,0 +1,158 @@
+---
+const reviews = [
+  { initials: 'AQ', name: 'Asterion Quads', text: 'Best safari in malia hersonissos kyriakos was very friendly and understandable' },
+  { initials: 'SK', name: 'Steffen Katzschmann', text: 'It was a wonderful time from start to finish. All the employees were very nice and accommodating.' },
+  { initials: 'HD', name: 'הדר דוד', text: 'Today Kostas took us on a 3-hour trip, magical landscapes, challenging and full of adrenaline.' },
+  { initials: 'BB', name: 'boldi bonis', text: 'We took part in the best quad tour of our lives. Beautiful landscapes, mountain peaks.' },
+  { initials: 'AR', name: 'Audrey Rachowiak', text: 'It was a very great experience to visit lassithi, very nice guide! Visit an olive oil and pottery factory.' },
+  { initials: 'JC', name: 'J C', text: 'We had a great time on the quad tour. You get an all day experience including on road and off road quad biking.' },
+];
+const maxIndex = 3; // 6 cards, 3 visible => positions 0,1,2,3
+---
+
+<section class="testimonials-carousel py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-dark text-center mb-8">
+      Testimonials from Our Valued Clients
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
+      <!-- Left panel -->
+      <div class="w-full md:w-[220px] md:min-w-[220px] shrink-0 flex flex-col gap-3">
+        <p class="font-bold text-dark text-lg">Asterion Quads</p>
+        <div class="flex items-center gap-2">
+          <span class="text-dark font-bold">5.0</span>
+          <span class="text-primary text-lg" aria-hidden="true">★★★★★</span>
+        </div>
+        <p class="text-gray-600 text-sm">Based on 20 reviews</p>
+        <p class="text-gray-600 text-sm">
+          powered by
+          <span class="inline-flex font-medium">
+            <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+          </span>
+        </p>
+      </div>
+
+      <!-- Right panel: carousel -->
+      <div class="flex-1 w-full md:min-w-0 overflow-hidden relative">
+        <div class="relative">
+          <!-- Arrow left -->
+          <button
+            type="button"
+            class="testimonials-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none"
+            aria-label="Previous reviews"
+          >
+            <span class="text-xl leading-none">&lt;</span>
+          </button>
+          <!-- Arrow right -->
+          <button
+            type="button"
+            class="testimonials-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-dark hover:bg-gray-50 disabled:opacity-40 disabled:pointer-events-none"
+            aria-label="Next reviews"
+          >
+            <span class="text-xl leading-none">&gt;</span>
+          </button>
+
+          <!-- Track container (overflow hidden) -->
+          <div class="overflow-hidden px-12">
+            <div class="testimonials-track flex gap-4 transition-transform duration-300 ease-out" style="transform: translateX(0);">
+              {reviews.map((r) => (
+                <div class="testimonials-card flex-shrink-0 w-[280px] bg-white rounded-xl shadow-sm p-5">
+                  <div class="flex items-start justify-between gap-2 mb-2">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <div class="w-10 h-10 rounded-full bg-gray-400 flex items-center justify-center text-white font-semibold text-sm shrink-0">
+                        {r.initials}
+                      </div>
+                      <div class="min-w-0">
+                        <p class="font-bold text-dark truncate">{r.name}</p>
+                        <p class="text-gray-500 text-xs">3 years</p>
+                      </div>
+                    </div>
+                    <span class="shrink-0 text-xs font-medium" style="color:#4285F4" aria-hidden="true">G</span>
+                  </div>
+                  <p class="text-amber-500 text-sm mb-2" aria-hidden="true">★★★★★</p>
+                  <p class="text-gray-600 text-sm leading-relaxed">{r.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="flex justify-center gap-2 mt-6">
+          {[0, 1, 2, 3].map((i) => (
+            <button
+              type="button"
+              class="testimonials-dot w-2.5 h-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors data-[active]:bg-primary data-[active]:w-3 data-[active]:h-3"
+              data-index={i}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.querySelector('.testimonials-carousel');
+    if (!section) return;
+
+    const track = section.querySelector('.testimonials-track');
+    const cards = section.querySelectorAll('.testimonials-card');
+    const prevBtn = section.querySelector('.testimonials-prev');
+    const nextBtn = section.querySelector('.testimonials-next');
+    const dots = section.querySelectorAll('.testimonials-dot');
+
+    const maxIndex = 3;
+    let currentIndex = 0;
+
+    function getStepPx() {
+      if (cards.length === 0) return 0;
+      const card = cards[0];
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function updateCarousel() {
+      const step = getStepPx();
+      track.style.transform = `translateX(-${currentIndex * step}px)`;
+
+      if (prevBtn) {
+        prevBtn.disabled = currentIndex === 0;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentIndex === maxIndex;
+      }
+
+      dots.forEach((dot, i) => {
+        dot.setAttribute('data-active', i === currentIndex ? '' : null);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1);
+        updateCarousel();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = Math.min(maxIndex, currentIndex + 1);
+        updateCarousel();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+  })();
+</script>
