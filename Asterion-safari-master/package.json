@@ -1,0 +1,22 @@
+{
+  "name": "asterion-safari",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.1",
+    "firebase": "^12.10.0",
+    "firebase-admin": "^13.7.0",
+    "firebase-tools": "^15.8.0",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}
