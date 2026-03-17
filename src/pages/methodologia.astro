@@ -72,7 +72,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 						Periodization<span class="text-lime">.</span>
 					</h2>
 					<p class="text-grey leading-relaxed mb-6">
-						Η προπόνηση δεν είναι τυχαία. Χωρίζουμε τον χρόνο σε φάσεις — υπερτροφία, δύναμη, ισχύς, αποφόρτιση — ώστε να μεγιστοποιούμε τα αποτελέσματα χωρίς υπερπροπόνηση.
+						Η προπόνηση δεν είναι τυχαία. Χωρίζουμε τον χρόνο σε φάσεις ώστε να μεγιστοποιούμε τα αποτελέσματα χωρίς υπερπροπόνηση.
 					</p>
 					<p class="text-grey leading-relaxed">
 						Κάθε φάση έχει συγκεκριμένο στόχο, ένταση και όγκο. Η μετάβαση από φάση σε φάση γίνεται με βάση δεδομένα, όχι αίσθηση.
@@ -80,24 +80,36 @@ import SectionHeader from '../components/SectionHeader.astro';
 				</div>
 				<div class="bg-light/5 p-8 md:p-12">
 					<p class="font-heading text-sm uppercase tracking-[0.2em] text-lime mb-6">Φάσεις</p>
-					<div class="space-y-6">
-						<div>
-							<p class="text-light font-bold mb-1">Υπερτροφία</p>
-							<p class="text-grey text-sm">Αύξηση μυϊκού όγκου — υψηλός όγκος, μέτρια ένταση</p>
-						</div>
-						<div>
-							<p class="text-light font-bold mb-1">Δύναμη</p>
-							<p class="text-grey text-sm">Αύξηση δύναμης — χαμηλότερος όγκος, υψηλή ένταση</p>
-						</div>
-						<div>
-							<p class="text-light font-bold mb-1">Ισχύς</p>
-							<p class="text-grey text-sm">Εκρηκτική δύναμη — χαμηλός όγκος, μέγιστη ένταση</p>
-						</div>
-						<div>
-							<p class="text-light font-bold mb-1">Αποφόρτιση</p>
-							<p class="text-grey text-sm">Ανάκαμψη — μειωμένος όγκος και ένταση για υπεραντιστάθμιση</p>
-						</div>
-					</div>
+					<ul class="space-y-4 text-grey">
+						<li class="flex items-start gap-3">
+							<span class="text-lime mt-1">&#9632;</span>
+							<div>
+								<p class="text-light font-bold mb-1">Υπερτροφία</p>
+								<p class="text-grey text-sm">Αύξηση μυϊκού όγκου — υψηλός όγκος, μέτρια ένταση</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="text-lime mt-1">&#9632;</span>
+							<div>
+								<p class="text-light font-bold mb-1">Δύναμη</p>
+								<p class="text-grey text-sm">Αύξηση δύναμης — χαμηλότερος όγκος, υψηλή ένταση</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="text-lime mt-1">&#9632;</span>
+							<div>
+								<p class="text-light font-bold mb-1">Ισχύς</p>
+								<p class="text-grey text-sm">Εκρηκτική δύναμη — χαμηλός όγκος, μέγιστη ένταση</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="text-lime mt-1">&#9632;</span>
+							<div>
+								<p class="text-light font-bold mb-1">Αποφόρτιση</p>
+								<p class="text-grey text-sm">Ανάκαμψη — μειωμένος όγκος και ένταση για υπεραντιστάθμιση</p>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -113,7 +125,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 						Structured Systems<span class="text-lime">.</span>
 					</h2>
 					<p class="text-grey leading-relaxed mb-6">
-						Κάθε πρόγραμμα ακολουθεί ξεκάθαρη αρχιτεκτονική. Από τον μακρόκυκλο μέχρι το μεμονωμένο σετ, τίποτα δεν είναι τυχαίο.
+						Κάθε πρόγραμμα ακολουθεί ξεκάθαρη μεθοδολογία. Από τον μακρόκυκλο μέχρι το μεμονωμένο σετ, τίποτα δεν είναι τυχαίο.
 					</p>
 					<p class="text-grey leading-relaxed">
 						Χρησιμοποιούμε evidence-based μεθοδολογίες και τις προσαρμόζουμε στο επίπεδο, τους στόχους και το προπονητικό ιστορικό του κάθε μέλους.
@@ -124,19 +136,19 @@ import SectionHeader from '../components/SectionHeader.astro';
 					<ul class="space-y-4 text-grey">
 						<li class="flex items-start gap-3">
 							<span class="text-lime mt-1">&#9632;</span>
-							<span>Μακρόκυκλος: σχεδιασμός 12-16 εβδομάδων</span>
+							<span>Μακρόκυκλος</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="text-lime mt-1">&#9632;</span>
-							<span>Μεσόκυκλος: φάσεις 3-6 εβδομάδων με στόχο</span>
+							<span>Μεσόκυκλος</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="text-lime mt-1">&#9632;</span>
-							<span>Μικρόκυκλος: εβδομαδιαίος σχεδιασμός</span>
+							<span>Μικρόκυκλος</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="text-lime mt-1">&#9632;</span>
-							<span>Προπόνηση: κάθε προπόνηση με σαφή δομή και στόχο</span>
+							<span>Προπόνηση</span>
 						</li>
 					</ul>
 				</div>
