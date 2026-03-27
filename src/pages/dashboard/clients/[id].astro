@@ -26,6 +26,7 @@ let formValues = {
   start_date: client.start_date || '',
   payment_status: client.payment_status || 'pending',
   package: client.package || '',
+  notes: client.notes || '',
 };
 
 if (Astro.request.method === 'POST') {
@@ -38,6 +39,7 @@ if (Astro.request.method === 'POST') {
     start_date: fd.get('start_date') as string,
     payment_status: fd.get('payment_status') as string,
     package: packages.join(', '),
+    notes: fd.get('notes') as string,
   };
 
   if (!formValues.full_name?.trim()) {
@@ -52,6 +54,7 @@ if (Astro.request.method === 'POST') {
         start_date: formValues.start_date || null,
         payment_status: formValues.payment_status || 'pending',
         package: formValues.package?.trim() || null,
+        notes: formValues.notes?.trim() || null,
       })
       .eq('id', id);
 
@@ -176,6 +179,19 @@ if (Astro.request.method === 'POST') {
             ))}
           </div>
         </fieldset>
+
+        <div>
+          <label for="notes" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">
+            Σημειώσεις
+          </label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            class="w-full bg-transparent border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150 resize-y"
+            placeholder="Προσθέστε σημειώσεις για τον πελάτη..."
+          >{formValues.notes}</textarea>
+        </div>
 
         <div class="flex gap-4 pt-4">
           <button

@@ -80,12 +80,25 @@ const successMessages: Record<string, string> = {
         </div>
       )}
 
-      <!-- Clients count -->
-      <p class="text-grey text-sm mb-6">
-        {clients && clients.length > 0
-          ? `${clients.length} πελάτες`
-          : ''}
-      </p>
+      <!-- Search bar -->
+      {clients && clients.length > 0 && (
+        <div class="mb-6">
+          <div class="relative">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-grey pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Αναζήτηση με όνομα, email ή τηλέφωνο..."
+              class="w-full sm:w-96 bg-light/[0.03] border border-light/10 text-light placeholder-grey/50 text-sm px-4 py-3 pl-11 focus:outline-none focus:border-lime transition-colors duration-150"
+            />
+          </div>
+          <p id="search-count" class="text-grey text-sm mt-3">
+            {`${clients.length} πελάτες`}
+          </p>
+        </div>
+      )}
 
       {error && (
         <div class="mb-6 border border-red-500/30 bg-red-500/10 text-red-400 text-sm px-4 py-3">
@@ -118,7 +131,10 @@ const successMessages: Record<string, string> = {
             </thead>
             <tbody>
               {clients.map((client) => (
-                <tr class="border-b border-light/5 hover:bg-light/[0.02] transition-colors duration-100">
+                <tr
+                  class="border-b border-light/5 hover:bg-light/[0.02] transition-colors duration-100 cursor-pointer"
+                  onclick={`window.location='/dashboard/clients/${client.id}'`}
+                >
                   <td class="px-6 py-4 text-light font-bold whitespace-nowrap">{client.full_name}</td>
                   <td class="px-6 py-4 text-grey whitespace-nowrap">{client.email || '—'}</td>
                   <td class="px-6 py-4 text-grey whitespace-nowrap">{client.phone || '—'}</td>
@@ -137,7 +153,7 @@ const successMessages: Record<string, string> = {
                     )}
                   </td>
                   <td class="px-6 py-4 text-grey whitespace-nowrap">{client.package || '—'}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
+                  <td class="px-6 py-4 whitespace-nowrap" onclick="event.stopPropagation()">
                     <div class="flex items-center gap-3">
                       <a
                         href={`/dashboard/clients/${client.id}`}
@@ -166,5 +182,35 @@ const successMessages: Record<string, string> = {
 
     </div>
   </section>
+
+<script>
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const countEl = document.getElementById('search-count');
+  const rows = document.querySelectorAll('tbody tr');
+
+  if (input && rows.length > 0) {
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const cells = row.querySelectorAll('td');
+        const name = cells[0]?.textContent?.toLowerCase() || '';
+        const email = cells[1]?.textContent?.toLowerCase() || '';
+        const phone = cells[2]?.textContent?.toLowerCase() || '';
+
+        const match = !query || name.includes(query) || email.includes(query) || phone.includes(query);
+        (row as HTMLElement).style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      if (countEl) {
+        countEl.textContent = query
+          ? `${visible} από ${rows.length} πελάτες`
+          : `${rows.length} πελάτες`;
+      }
+    });
+  }
+</script>
 
 </Layout>
