@@ -1,0 +1,170 @@
+---
+export const prerender = false;
+
+import Layout from '../../layouts/Layout.astro';
+import { createSupabaseClient } from '../../lib/supabase';
+
+const supabase = createSupabaseClient(Astro.cookies);
+
+const { data: clients, error } = await supabase
+  .from('clients')
+  .select('*')
+  .order('created_at', { ascending: false });
+
+const success = Astro.url.searchParams.get('success');
+const urlError = Astro.url.searchParams.get('error');
+
+const statusLabels: Record<string, string> = {
+  paid: 'Πληρωμένο',
+  pending: 'Εκκρεμεί',
+  overdue: 'Ληξιπρόθεσμο',
+};
+
+const statusColors: Record<string, string> = {
+  paid: 'bg-lime/20 text-lime',
+  pending: 'bg-amber-400/20 text-amber-400',
+  overdue: 'bg-red-500/20 text-red-400',
+};
+
+const successMessages: Record<string, string> = {
+  created: 'Ο πελάτης προστέθηκε επιτυχώς.',
+  updated: 'Τα στοιχεία ενημερώθηκαν επιτυχώς.',
+  deleted: 'Ο πελάτης διαγράφηκε επιτυχώς.',
+};
+---
+
+<Layout title="Πίνακας Ελέγχου — RESET GYM">
+
+  <section class="pt-32 md:pt-40 pb-24 md:pb-32 min-h-screen">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12">
+        <div>
+          <p class="text-lime font-bold text-sm tracking-[0.3em] uppercase mb-4">
+            Admin
+          </p>
+          <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl uppercase leading-[0.95] tracking-tight">
+            Πίνακας Ελέγχου<span class="text-lime">.</span>
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <a
+            href="/dashboard/clients/new"
+            class="bg-lime text-dark font-bold text-sm tracking-wider uppercase px-6 py-3 hover:bg-lime-hover transition-colors duration-150"
+          >
+            + Νέος Πελάτης
+          </a>
+          <form method="POST" action="/api/auth/logout">
+            <button
+              type="submit"
+              class="text-sm text-grey border border-light/10 px-6 py-2 hover:border-lime hover:text-lime transition-colors duration-150 uppercase tracking-wider font-bold"
+            >
+              Αποσύνδεση
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Success banner -->
+      {success && successMessages[success] && (
+        <div class="mb-6 border border-lime/30 bg-lime/10 text-lime text-sm px-4 py-3">
+          {successMessages[success]}
+        </div>
+      )}
+
+      <!-- Error banner -->
+      {urlError && (
+        <div class="mb-6 border border-red-500/30 bg-red-500/10 text-red-400 text-sm px-4 py-3">
+          Κάτι πήγε στραβά. Δοκιμάστε ξανά.
+        </div>
+      )}
+
+      <!-- Clients count -->
+      <p class="text-grey text-sm mb-6">
+        {clients && clients.length > 0
+          ? `${clients.length} πελάτες`
+          : ''}
+      </p>
+
+      {error && (
+        <div class="mb-6 border border-red-500/30 bg-red-500/10 text-red-400 text-sm px-4 py-3">
+          Σφάλμα φόρτωσης δεδομένων. Δοκιμάστε ξανά.
+        </div>
+      )}
+
+      {!error && (!clients || clients.length === 0) && (
+        <div class="border border-light/5 py-24 text-center">
+          <p class="text-grey text-lg">Δεν υπάρχουν πελάτες ακόμα.</p>
+          <p class="text-grey/60 text-sm mt-2">
+            <a href="/dashboard/clients/new" class="text-lime hover:underline">Προσθέστε τον πρώτο πελάτη</a>
+          </p>
+        </div>
+      )}
+
+      {clients && clients.length > 0 && (
+        <div class="overflow-x-auto border border-light/10">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-light/10 bg-light/[0.03]">
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ονοματεπώνυμο</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Email</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Τηλέφωνο</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ημ. Έναρξης</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πληρωμή</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πακέτο</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ενέργειες</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clients.map((client) => (
+                <tr class="border-b border-light/5 hover:bg-light/[0.02] transition-colors duration-100">
+                  <td class="px-6 py-4 text-light font-bold whitespace-nowrap">{client.full_name}</td>
+                  <td class="px-6 py-4 text-grey whitespace-nowrap">{client.email || '—'}</td>
+                  <td class="px-6 py-4 text-grey whitespace-nowrap">{client.phone || '—'}</td>
+                  <td class="px-6 py-4 text-grey whitespace-nowrap">
+                    {client.start_date
+                      ? new Date(client.start_date).toLocaleDateString('el-GR')
+                      : '—'}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    {client.payment_status ? (
+                      <span class={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 ${statusColors[client.payment_status] || 'bg-light/10 text-grey'}`}>
+                        {statusLabels[client.payment_status] || client.payment_status}
+                      </span>
+                    ) : (
+                      <span class="text-grey">—</span>
+                    )}
+                  </td>
+                  <td class="px-6 py-4 text-grey whitespace-nowrap">{client.package || '—'}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center gap-3">
+                      <a
+                        href={`/dashboard/clients/${client.id}`}
+                        class="text-xs font-bold uppercase tracking-wider text-grey hover:text-lime transition-colors duration-150"
+                      >
+                        Επεξεργασία
+                      </a>
+                      <form method="POST" action="/api/dashboard/clients/delete" class="inline">
+                        <input type="hidden" name="id" value={client.id} />
+                        <button
+                          type="submit"
+                          onclick="return confirm('Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον πελάτη;')"
+                          class="text-xs font-bold uppercase tracking-wider text-grey hover:text-red-400 transition-colors duration-150"
+                        >
+                          Διαγραφή
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+    </div>
+  </section>
+
+</Layout>
