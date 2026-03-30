@@ -16,6 +16,7 @@ let formValues = {
   start_date: today,
   payment_status: 'pending',
   package: '',
+  end_date: '',
   notes: '',
 };
 
@@ -29,6 +30,7 @@ if (Astro.request.method === 'POST') {
     start_date: fd.get('start_date') as string,
     payment_status: fd.get('payment_status') as string,
     package: packages.join(', '),
+    end_date: fd.get('end_date') as string,
     notes: fd.get('notes') as string,
   };
 
@@ -42,6 +44,7 @@ if (Astro.request.method === 'POST') {
       start_date: formValues.start_date || null,
       payment_status: formValues.payment_status || 'pending',
       package: formValues.package?.trim() || null,
+      end_date: formValues.end_date || null,
       notes: formValues.notes?.trim() || null,
     });
 
@@ -128,6 +131,19 @@ if (Astro.request.method === 'POST') {
             id="start_date"
             name="start_date"
             value={formValues.start_date}
+            class="w-full bg-transparent bg-dark border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
+          />
+        </div>
+
+        <div>
+          <label for="end_date" class="block text-sm font-bold tracking-wider uppercase text-grey mb-2">
+            Ημερομηνία Λήξης
+          </label>
+          <input
+            type="date"
+            id="end_date"
+            name="end_date"
+            value={formValues.end_date}
             class="w-full bg-transparent bg-dark border border-light/10 text-light px-4 py-3 text-sm focus:border-lime focus:outline-none transition-colors duration-150"
           />
         </div>

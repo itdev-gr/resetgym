@@ -124,6 +124,7 @@ const successMessages: Record<string, string> = {
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Email</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Τηλέφωνο</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ημ. Έναρξης</th>
+                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ημ. Λήξης</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πληρωμή</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πακέτο</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ενέργειες</th>
@@ -141,6 +142,11 @@ const successMessages: Record<string, string> = {
                   <td class="px-6 py-4 text-grey whitespace-nowrap">
                     {client.start_date
                       ? new Date(client.start_date).toLocaleDateString('el-GR')
+                      : '—'}
+                  </td>
+                  <td class="px-6 py-4 text-grey whitespace-nowrap">
+                    {client.end_date
+                      ? new Date(client.end_date).toLocaleDateString('el-GR')
                       : '—'}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
