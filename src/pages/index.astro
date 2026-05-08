@@ -1,8 +1,153 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const localBusinessSchema = {
+	"@context": "https://schema.org",
+	"@type": ["LocalBusiness", "ExerciseGym"],
+	"@id": "https://www.resetgym.gr/#localbusiness",
+	"name": "Reset Gym Γυμναστήριο Χαλάνδρι",
+	"alternateName": "Reset Gym",
+	"description": "Το Reset Gym είναι γυμναστήριο στο Χαλάνδρι που προσφέρει ολοκληρωμένη εμπειρία γυμναστικής σε σύγχρονο χώρο με έμπειρους γυμναστές. Προσφέρουμε personal training, Pilates Reformer, functional training, cross training και ομαδικά προγράμματα σχεδιασμένα για κάθε επίπεδο και ηλικία. Κάθε ασκούμενος λαμβάνει εξατομικευμένο πλάνο προπόνησης προσαρμοσμένο στους προσωπικούς του στόχους, είτε πρόκειται για ενδυνάμωση, απώλεια βάρους, βελτίωση κινητικότητας ή αθλητική απόδοση. Οι πιστοποιημένοι γυμναστές μας εστιάζουν στη σωστή τεχνική και την ασφαλή εξάσκηση, δημιουργώντας ένα περιβάλλον που εμπνέει συνέπεια και αποτελεσματικότητα. Επισκεφθείτε το γυμναστήριο μας στο Χαλάνδρι και ξεκινήστε σήμερα.",
+	"url": "https://www.resetgym.gr/",
+	"logo": "https://www.resetgym.gr/logo-full.svg",
+	"image": "https://www.resetgym.gr/logo-full.svg",
+	"telephone": "+302130319729",
+	"email": "resetgym325@gmail.com",
+	"priceRange": "€€",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Λεωφόρος Μεσογείων 325",
+		"addressLocality": "Χαλάνδρι",
+		"postalCode": "15231",
+		"addressRegion": "Αττική",
+		"addressCountry": "GR",
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": 38.00742992254404,
+		"longitude": 23.800965868995515,
+	},
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			"opens": "07:30",
+			"closes": "22:00",
+		},
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": "Saturday",
+			"opens": "09:00",
+			"closes": "15:00",
+		},
+	],
+	"areaServed": [
+		{ "@type": "City", "name": "Χαλάνδρι" },
+		{ "@type": "City", "name": "Αγία Παρασκευή" },
+		{ "@type": "City", "name": "Βριλήσσια" },
+		{ "@type": "City", "name": "Μαρούσι" },
+		{ "@type": "City", "name": "Χολαργός" },
+	],
+	"sameAs": ["https://www.instagram.com/resetfitnessevolution/"],
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "Υπηρεσίες Reset Gym",
+		"itemListElement": [
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Personal Training",
+					"description": "Εξατομικευμένη προπόνηση ένας προς έναν με πιστοποιημένο γυμναστή, με στοχευμένο πλάνο για ενδυνάμωση, απώλεια βάρους ή αθλητική απόδοση.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Pilates Reformer",
+					"description": "Μαθήματα Pilates Reformer σε εξειδικευμένα μηχανήματα για βελτίωση στάσης σώματος, ευλυγισίας και ενδυνάμωσης κορμού.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Functional Training",
+					"description": "Λειτουργική προπόνηση που βελτιώνει δύναμη, κινητικότητα και ισορροπία μέσω ασκήσεων που μιμούνται φυσικές κινήσεις της καθημερινότητας.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Cross Training",
+					"description": "Έντονη συνδυαστική προπόνηση με στοιχεία ενδυνάμωσης, αντοχής και πλειομετρικών για ολόπλευρη φυσική κατάσταση.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Small Group Training",
+					"description": "Ομαδικά μαθήματα μικρού αριθμού ατόμων με προσωπική καθοδήγηση γυμναστή και εξατομικευμένη προσοχή σε κάθε ασκούμενο.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Ενδυνάμωση Strength Training",
+					"description": "Προγράμματα ενδυνάμωσης με ελεύθερα βάρη και μηχανήματα για ανάπτυξη μυϊκής μάζας, δύναμης και βελτίωση μεταβολισμού.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Cardio Training",
+					"description": "Καρδιοαναπνευστικές προπονήσεις για βελτίωση αντοχής, κάψιμο λίπους και ενίσχυση της καρδιαγγειακής υγείας.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Αποκατάσταση Recovery",
+					"description": "Προγράμματα αποκατάστασης και κινητικής επανένταξης μετά από τραυματισμό ή για διαχείριση χρόνιων μυοσκελετικών ζητημάτων.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Αξιολόγηση Φυσικής Κατάστασης",
+					"description": "Εκτενής αξιολόγηση φυσικής κατάστασης, σύστασης σώματος και κινητικών προτύπων για τον σχεδιασμό εξατομικευμένου πλάνου προπόνησης.",
+				},
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Γυμναστική",
+					"description": "Ολοκληρωμένα προγράμματα γυμναστικής σε σύγχρονο χώρο, σχεδιασμένα για κάθε επίπεδο και ηλικία με έμφαση στη σωστή τεχνική.",
+				},
+			},
+		],
+	},
+};
 ---
 
-<Layout>
+<Layout
+	title="Γυμναστήριο Χαλάνδρι | Personal Training & Pilates"
+	description="Γυμναστήριο στο Χαλάνδρι με personal training, pilates reformer, functional και cross training σε σύγχρονο χώρο με εξατομικευμένα προγράμματα."
+>
+	<script
+		slot="head"
+		type="application/ld+json"
+		is:inline
+		set:html={JSON.stringify(localBusinessSchema)}
+	/>
 
 	<!-- ═══════════════════════════════════════════════ -->
 	<!-- HERO -->
@@ -26,9 +171,13 @@ import Layout from '../layouts/Layout.astro';
 				Fitness Evolution
 			</p>
 			<h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[0.95] tracking-tight max-w-5xl">
-				Εξελίξου
+				<span class="block">Γυμναστήριο Χαλάνδρι</span>
+				<span class="block text-lime text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4">Personal Training &amp; Pilates Reformer</span>
 			</h1>
-			<p class="mt-8 text-grey text-lg md:text-xl max-w-2xl leading-relaxed">
+			<p class="mt-8 font-heading text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-light">
+				Εξελίξου<span class="text-lime">.</span>
+			</p>
+			<p class="mt-4 text-grey text-lg md:text-xl max-w-2xl leading-relaxed">
 				Η καλύτερη εκδοχή σου σε περιμένει.
 			</p>
 			<div class="mt-12 flex flex-col sm:flex-row gap-4">

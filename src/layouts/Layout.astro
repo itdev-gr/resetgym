@@ -5,9 +5,13 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title?: string;
+	description?: string;
 }
 
-const { title = 'RESET GYM — Fitness Evolution' } = Astro.props;
+const {
+	title = 'RESET GYM — Fitness Evolution',
+	description = 'RESET GYM — Δομή, Επιστήμη, Κοινότητα. Fitness Evolution στην Ελλάδα.',
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -16,11 +20,12 @@ const { title = 'RESET GYM — Fitness Evolution' } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="description" content="RESET GYM — Δομή, Επιστήμη, Κοινότητα. Fitness Evolution στην Ελλάδα." />
+		<meta name="description" content={description} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
 		<title>{title}</title>
+		<slot name="head" />
 	</head>
 	<body class="bg-dark text-light font-body antialiased">
 		<Nav />
