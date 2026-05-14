@@ -123,10 +123,50 @@ const successMessages: Record<string, string> = {
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ονοματεπώνυμο</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Email</th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Τηλέφωνο</th>
-                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ημ. Έναρξης</th>
-                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ημ. Λήξης</th>
-                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πληρωμή</th>
-                <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Πακέτο</th>
+                <th
+                  data-sort="date"
+                  data-sort-key="start"
+                  role="button"
+                  tabindex="0"
+                  aria-sort="none"
+                  class="cursor-pointer select-none hover:bg-light/[0.05] group font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4"
+                >
+                  Ημ. Έναρξης
+                  <span class="sort-indicator ml-1 inline-block w-3 text-grey/60 group-hover:text-lime" aria-hidden="true"></span>
+                </th>
+                <th
+                  data-sort="date"
+                  data-sort-key="end"
+                  role="button"
+                  tabindex="0"
+                  aria-sort="none"
+                  class="cursor-pointer select-none hover:bg-light/[0.05] group font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4"
+                >
+                  Ημ. Λήξης
+                  <span class="sort-indicator ml-1 inline-block w-3 text-grey/60 group-hover:text-lime" aria-hidden="true"></span>
+                </th>
+                <th
+                  data-sort="text"
+                  data-sort-key="payment"
+                  role="button"
+                  tabindex="0"
+                  aria-sort="none"
+                  class="cursor-pointer select-none hover:bg-light/[0.05] group font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4"
+                >
+                  Πληρωμή
+                  <span class="sort-indicator ml-1 inline-block w-3 text-grey/60 group-hover:text-lime" aria-hidden="true"></span>
+                </th>
+                <th
+                  data-sort="text"
+                  data-sort-key="package"
+                  role="button"
+                  tabindex="0"
+                  aria-sort="none"
+                  class="cursor-pointer select-none hover:bg-light/[0.05] group font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4"
+                >
+                  Πακέτο
+                  <span class="sort-indicator ml-1 inline-block w-3 text-grey/60 group-hover:text-lime" aria-hidden="true"></span>
+                </th>
                 <th class="font-heading text-xs uppercase tracking-[0.15em] text-grey px-6 py-4">Ενέργειες</th>
               </tr>
             </thead>
@@ -217,6 +257,110 @@ const successMessages: Record<string, string> = {
       }
     });
   }
+</script>
+
+<script>
+  // Sort the clients table by clicking on column headers.
+  // Triggers on any <th data-sort="..."> within the dashboard table.
+
+  type SortType = "date" | "number" | "text";
+  type SortDir = "asc" | "desc";
+
+  function parseDate(raw: string): number {
+    // Expected format: DD/MM/YYYY. Returns ms-since-epoch (or NaN for empty cells).
+    const m = raw.trim().match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})$/);
+    if (!m) return Number.NEGATIVE_INFINITY;
+    const [, d, mo, y] = m;
+    const year = y.length === 2 ? 2000 + Number(y) : Number(y);
+    return new Date(year, Number(mo) - 1, Number(d)).getTime();
+  }
+
+  function parseNumber(raw: string): number {
+    // Pull the first numeric run out, normalise EU decimal comma to dot.
+    const m = raw.replace(/\s/g, "").match(/-?[\d.,]+/);
+    if (!m) return Number.NEGATIVE_INFINITY;
+    const normalised = m[0].replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".");
+    const n = parseFloat(normalised);
+    return Number.isNaN(n) ? Number.NEGATIVE_INFINITY : n;
+  }
+
+  function cellValue(cell: HTMLTableCellElement, type: SortType): number | string {
+    const raw = cell.textContent?.trim() ?? "";
+    if (type === "date") return parseDate(raw);
+    if (type === "number") return parseNumber(raw);
+    return raw.toLocaleLowerCase("el-GR");
+  }
+
+  function isEmpty(v: number | string): boolean {
+    if (typeof v === "number") return !Number.isFinite(v);
+    return v === "" || v === "—" || v === "-";
+  }
+
+  function compare(a: number | string, b: number | string, dir: SortDir): number {
+    const aEmpty = isEmpty(a);
+    const bEmpty = isEmpty(b);
+    if (aEmpty && bEmpty) return 0;
+    if (aEmpty) return 1;
+    if (bEmpty) return -1;
+    if (a < b) return dir === "asc" ? -1 : 1;
+    if (a > b) return dir === "asc" ? 1 : -1;
+    return 0;
+  }
+
+  function attachSorting(table: HTMLTableElement): void {
+    const headerRow = table.tHead?.rows[0];
+    const tbody = table.tBodies[0];
+    if (!headerRow || !tbody) return;
+
+    const headers = Array.from(headerRow.cells);
+
+    headers.forEach((th, colIndex) => {
+      if (!th.dataset.sort) return;
+      const type = th.dataset.sort as SortType;
+
+      const sortBy = () => {
+        // Reset other headers' aria-sort + indicator.
+        headers.forEach((other) => {
+          if (other === th) return;
+          other.setAttribute("aria-sort", "none");
+          const ind = other.querySelector(".sort-indicator");
+          if (ind) ind.textContent = "";
+        });
+
+        const current = th.getAttribute("aria-sort");
+        const dir: SortDir = current === "ascending" ? "desc" : "asc";
+        th.setAttribute("aria-sort", dir === "asc" ? "ascending" : "descending");
+        const indicator = th.querySelector(".sort-indicator");
+        if (indicator) indicator.textContent = dir === "asc" ? "▲" : "▼";
+
+        const rows = Array.from(tbody.rows);
+        rows.sort((rowA, rowB) => {
+          const cellA = rowA.cells[colIndex];
+          const cellB = rowB.cells[colIndex];
+          if (!cellA || !cellB) return 0;
+          return compare(cellValue(cellA, type), cellValue(cellB, type), dir);
+        });
+
+        // Re-append in sorted order. Appending an existing node moves it.
+        const frag = document.createDocumentFragment();
+        rows.forEach((r) => frag.appendChild(r));
+        tbody.appendChild(frag);
+      };
+
+      th.addEventListener("click", sortBy);
+      th.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          sortBy();
+        }
+      });
+    });
+  }
+
+  // Attach to every table on the dashboard that has at least one sortable header.
+  document.querySelectorAll<HTMLTableElement>("table").forEach((table) => {
+    if (table.querySelector("th[data-sort]")) attachSorting(table);
+  });
 </script>
 
 </Layout>

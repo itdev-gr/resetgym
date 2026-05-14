@@ -26,3 +26,6 @@ pnpm-debug.log*
 # firebase
 firebase-debug.log
 .vercel
+
+# Claude Code local settings
+.claude/settings.local.json
